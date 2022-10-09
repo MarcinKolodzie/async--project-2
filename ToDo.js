@@ -14,6 +14,10 @@ class ToDo {
         return fetchData(
             this.url,
             {
+                startCallback: () => {
+                    this.isLoading = true
+                    this.hasError = false
+                },
                 catchCallback: (error) => {
                     this.hasError = error
                 },
@@ -74,7 +78,7 @@ class ToDo {
         }
 
         if (this.hasError) {
-            const message = new Message('Error ocured!')
+            const message = new Message('Error ocurred!')
             this.container.appendChild(message.render()
             )
             return
